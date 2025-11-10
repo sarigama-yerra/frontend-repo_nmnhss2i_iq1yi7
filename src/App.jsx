@@ -1,26 +1,45 @@
-import { useState } from 'react'
+import Hero from './components/Hero'
+import About from './components/About'
+import Projects from './components/Projects'
+import TechStack from './components/TechStack'
+import Contact from './components/Contact'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-slate-950 text-white selection:bg-cyan-500/30 selection:text-white">
+      {/* Navigation */}
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mt-4 flex items-center justify-between rounded-full border border-white/10 bg-black/40 p-2 backdrop-blur-md">
+            <a href="#home" className="text-sm font-semibold tracking-wide text-cyan-300">ALEX MATRIX</a>
+            <nav className="hidden md:flex items-center gap-2 text-sm">
+              {[
+                { href: '#about', label: 'About' },
+                { href: '#projects', label: 'Projects' },
+                { href: '#stack', label: 'Stack' },
+                { href: '#contact', label: 'Contact' },
+              ].map((l) => (
+                <a key={l.href} href={l.href} className="rounded-full px-3 py-1.5 text-slate-200 hover:text-white hover:bg-white/10">
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <a href="#contact" className="hidden md:inline-flex rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-4 py-1.5 text-sm font-semibold">Let’s talk</a>
+          </div>
         </div>
-      </div>
+      </header>
+
+      <main className="pt-20">
+        <Hero />
+        <About />
+        <Projects />
+        <TechStack />
+        <Contact />
+      </main>
+
+      <footer className="bg-black border-t border-white/10 py-8 text-center text-slate-400">
+        © {new Date().getFullYear()} Alex Matrix — Built with care.
+      </footer>
     </div>
   )
 }
